@@ -1337,6 +1337,7 @@ codeunit 50000 "Sales Post Job Batch"
             SalesLine_l.VALIDATE(Type, SalesLine_l.Type::"G/L Account");
             SalesLine_l.Validate("No.", IntegrationSetup."Sale Product GL");//'502000');
             SalesLine_l.Validate("Description 2", FORMAT(SalesOrderStangin.productCode));
+            SalesLine_l."Description" := SalesOrderStangin.productName;
             SalesLine_l.VALIDATE(Quantity, 1);
             SalesLine_l.Validate("Currency Code", TempSalesHeader."Currency Code");
             SalesLine_l.Validate("Unit Price", OrderAmount_p);

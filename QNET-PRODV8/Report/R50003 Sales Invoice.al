@@ -42,6 +42,7 @@ report 50003 "Sales Invoice Report LT"
                 column(SerialNo; SerialNo) { }
                 column(ItemNo_; "No.") { }
                 column(Description; Description) { }
+                column("Description_2"; ItemCode) { }
                 column(Quantity; Quantity) { }
                 column(Unit_Price; "Unit Price") { }
                 column(VAT__; "VAT %") { }
@@ -106,6 +107,14 @@ report 50003 "Sales Invoice Report LT"
                         TotalVATPerAED := TotalVATPerUSD;
                         TotalAmountAED := TotalAmountUSD;
                     end;
+
+                    //LT Given Description 2 in item code
+                    if "Description 2" <> '' then
+                        ItemCode := "Description 2"
+                    else
+                        ItemCode := "No.";
+
+
                 end;
             }
             trigger OnAfterGetRecord()
@@ -137,6 +146,8 @@ report 50003 "Sales Invoice Report LT"
                     Currency := GLsetup."LCY Code"
                 else
                     Currency := "Currency Code";
+
+
             end;
         }
     }
@@ -167,4 +178,5 @@ report 50003 "Sales Invoice Report LT"
         TotalAmountAED: Decimal;
         SerialNo: Integer;
         CountryRegion: Record "Country/Region";
+        ItemCode: Text[100];
 }

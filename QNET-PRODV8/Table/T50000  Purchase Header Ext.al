@@ -5,6 +5,7 @@ tableextension 50000 "Purchase Header EXt" extends "Purchase Header"
         field(50000; "Sync with SOMS"; Enum " PO Integration Status")
         {
             DataClassification = ToBeClassified;
+            
             trigger OnValidate()
             begin
                 if "Sync with SOMS" = "Sync with SOMS"::Synced then
